@@ -1,0 +1,23 @@
+Options -MultiViews
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# home
+RewriteRule ^$ index.html [L]
+
+# clean urls for known pages
+RewriteRule ^listings/?$ listings.html [L]
+RewriteRule ^listing/?$ listing.html [L]
+RewriteRule ^submit/?$ submit.html [L]
+RewriteRule ^safety/?$ safety.html [L]
+RewriteRule ^admin/?$ admin.php [L]
+RewriteRule ^contact/?$ contact.html [L]
+
+# redirect old .html urls to clean urls
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+# index.html -> /
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]

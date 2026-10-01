@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R07KTVC3K3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R07KTVC3K3');
+</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Προϊόντα</title>
+    <link rel="stylesheet" href="styles.css" />
+	<link rel="icon" href="/images/agrora_favicon.ico" type="image/x-icon">
+  </head>
+
+  <body class="page-layout">
+    <header class="site-header">
+  <div class="container header-inner">
+
+    <button class="burger" type="button" aria-label="Άνοιγμα μενού">☰</button>
+
+    <a class="site-brand" href="/" aria-label="Agrora Home">
+      <img src="/images/agroraBrandT.png" alt="Agrora">
+    </a>
+
+    <a href="/submit" class="mobile-cta" aria-label="Νέο Προϊόν">＋</a>
+
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="/listings">Προϊόντα</a>
+      <a href="/submit" class="nav-cta">Δωρεάν Καταχώρηση</a>
+      <a href="/safety">Ασφάλεια</a>
+		<a href="/contact">Επικοινωνία</a>
+    </nav>
+
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span>Μενού</span>
+      <button id="mobileMenuClose" type="button" aria-label="Κλείσιμο μενού">✕</button>
+    </div>
+
+<div class="mobile-menu-links">
+    <a href="/listings">Προϊόντα</a>
+    <a href="/submit">Καταχώρηση</a>
+    <a href="/safety">Ασφάλεια</a>
+	<a href="/contact">Επικοινωνία</a>
+	  </div>
+  </div>
+</header>
+    <main class="page-content">
+      <div class="container listings-layout">
+        <!-- LEFT: filters -->
+        <aside class="filters-sidebar">
+		 <div class="filters-mobile-head">
+		  <button type="button" class="filters-close-btn" id="closeFiltersBtn" aria-label="Κλείσιμο φίλτρων">✕</button>
+		 </div>
+          <h2 class="filters-title">Φίλτρα</h2>
+
+
+          <form id="searchForm" class="filters-form">
+            <div class="form-group">
+              <label for="cropSearchInput">Καλλιέργεια</label>
+
+              <div class="crop-multi-select" id="cropMultiSelect">
+              <button type="button" class="crop-multi-toggle" id="cropSelectToggle">
+                <span id="cropSelectLabel">Όλες οι καλλιέργειες</span>
+                <span>▾</span>
+              </button>
+
+              <div class="crop-multi-menu" id="cropSelectMenu" hidden>
+                <div class="crop-multi-search-wrap">
+                  <input
+                    type="text"
+                    id="cropSearchInput"
+                    class="crop-multi-search"
+                    placeholder="Αναζήτηση καλλιέργειας..."
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="crop-multi-actions">
+                  <button type="button" class="chip" id="cropSelectAllBtn">Όλες</button>
+                  <button type="button" class="chip" id="cropClearBtn">Καθαρισμός</button>
+                </div>
+
+                <div class="crop-multi-options" id="cropOptions"></div>
+           
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="region">Περιοχή</label>
+              <select id="region">
+                <option value="">Όλες οι περιοχές</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Ποσότητα (τόνοι)</label>
+              <div class="range-group">
+                <input type="number" id="minQuantity" placeholder="Min" />
+                <input type="number" id="maxQuantity" placeholder="Max" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="harvestMonth">Συγκομιδή</label>
+              <input type="month" id="harvestMonth" />
+            </div>
+
+            <div class="form-group">
+              <label>Τιμή (€ / kg)</label>
+              <div class="range-group">
+                <input type="number" step="0.01" id="minPrice" placeholder="Min" />
+                <input type="number" step="0.01" id="maxPrice" placeholder="Max" />
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <button type="submit" class="search-button">Ανανέωση αποτελεσμάτων</button>
+            </div>
+
+            <div class="form-group full-width">
+              <button
+                id="resetFilters"
+                type="button"
+                class="reset-button hidden"
+              >
+                Reset filters
+              </button>
+            </div>
+
+          </form>
+        </aside>
+
+        <!-- CENTER: results -->
+<button type="button" class="mobile-filters-btn" id="openFiltersBtn">
+  Φίλτρα +
+</button>
+
+        <section class="results-area">
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Αρχική</a>
+            <span class="crumb-sep">/</span>
+            <span class="crumb-current">Προϊόντα</span>
+          </nav>
+          <div class="results-bar">
+            <div>
+              <h1 class="results-title">Προϊόντα</h1>
+              <div id="resultsCount"></div>
+              <div id="activeFilters" class="active-filters"></div>
+            </div>
+
+            <label class="sort">
+              Sort:
+              <select id="sortBy">
+                <option value="newest">Πιο πρόσφατες</option>
+                <option value="qtyDesc">Ποσότητα (μεγαλύτερη → μικρότερη)</option>
+                <option value="qtyAsc">Ποσότητα (μικρότερη → μεγαλύτερη)</option>
+                <option value="priceAsc">Τιμή (μικρότερη → μεγαλύτερη)</option>
+                <option value="priceDesc">Τιμή (μεγαλύτερη → μικρότερη)</option>
+              </select>
+            </label>
+          </div>
+
+        <div id="listingsContainer" class="listings-grid"></div>
+
+        <div class="pagination-bar">
+          <button id="prevPage" class="page-btn" type="button">← Προηγούμενο</button>
+
+          <div id="pageNumbers" class="page-numbers"></div>
+
+          <button id="nextPage" class="page-btn" type="button">Επόμενο →</button>
+        </div>
+        
+      </section>
+     </div>
+    </main>
+
+    <footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <strong class="footer-brand">Agrora.gr</strong>
+      <span class="muted">Αγορές & πωλήσεις απευθείας από παραγωγούς.</span>
+	  <span class = "muted">Email : info@agrora.gr</span>
+    </div>
+
+    <div class="footer-right">
+      <a href="/safety">Ασφαλείς Συναλλαγές</a>
+      <span class="footer-sep">•</span>
+      <a href="/submit">Καταχώρηση Προϊόντος</a>
+    </div>
+  </div>
+</footer>
+
+    <script src="js/ui.js" defer></script>
+    <script type="module" src="js/search.js"></script>
+  </body>
+</html>

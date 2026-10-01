@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Χονδρική Αγροτικών Προϊόντων </title>
+    <link rel="stylesheet" href="styles.css" />
+	<link rel="icon" href="/images/agrora_favicon.ico" type="image/x-icon">
+  </head>
+
+  <body class="page-layout">
+    <header class="site-header">
+  <div class="container header-inner">
+
+    <button class="burger" type="button" aria-label="Άνοιγμα μενού">☰</button>
+
+    <a class="site-brand" href="/" aria-label="Agrora Home">
+      <img src="/images/agroraBrandT.png" alt="Agrora">
+    </a>
+
+    <a href="/submit" class="mobile-cta" aria-label="Δωρεάν Καταχώρηση">＋</a>
+
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="/listings">Προϊόντα</a>
+      <a href="/submit" class="nav-cta">Δωρεάν Καταχώρηση</a>
+      <a href="/safety">Ασφάλεια</a>
+		<a href="/contact">Επικοινωνία</a>
+    </nav>
+
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span>Μενού</span>
+      <button id="mobileMenuClose" type="button" aria-label="Κλείσιμο μενού">✕</button>
+    </div>
+<div class="mobile-menu-links">
+    <a href="/listings">Προϊόντα</a>
+    <a href="/submit">Καταχώρηση</a>
+    <a href="/safety">Ασφάλεια</a>
+	<a href="/contact">Επικοινωνία</a>
+	  </div>
+  </div>
+</header>
+
+    <body class="page-layout">
+        <div id="siteHeader"></div>
+        <main class="page-content">  
+            <div class="contact-section">                                 
+                <div class="contact-image">
+                    <img src="images/contact-image.png" alt="Contact">
+                </div>
+                  
+                <form class="contact-form" id = "contact-form">
+
+                     <h2>Επικοινωνήστε μαζί μας!</h2>
+                                
+                                    
+                    <label> Όνομα</label>
+                    <input type ="text" id = "contact-name" required></input>
+                    <span class = "field-error" id = "contact-name-error"></span>
+                
+                
+                    <label> Email</label>
+                    <input type = "email" id = "contact-email" required></input>
+                    <span class = "field-error" id = "contact-email-error"></span>
+                
+                
+                    <label type = "text"> Μήνυμα</label>
+                    <textarea id = "contact-message" required></textarea>
+                    <span class = "field-error" id = "contact-message-error"></span>
+                    <button type ="submit">Αποστολή</button>
+                
+                </form>
+            </div>
+          
+        </main>
+
+        <div id="siteFooter"></div>
+
+        <script type="module" src="/js/layout.js"></script>
+        <script type="module" src="/js/contact.js"></script>
+    </body>
+</html>

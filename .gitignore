@@ -1,0 +1,43 @@
+# Private credentials and local environment files (never commit real values).
+.env
+.env.*
+!.env.example
+private/
+agrora-config.php
+admin-hash.txt
+*.pem
+*.key
+
+# User uploads are backed up separately from source code.
+/uploads/*
+!/uploads/listings/
+/uploads/listings/*
+!/uploads/listings/.gitkeep
+
+# Plesk-specific configuration, certificate challenges, and diagnostics.
+/.php-ini
+/.php-version
+/.well-known/
+/api/test-db.php
+
+# Database exports: only the reviewed schema and fictional seed belong in Git.
+*.sql
+!/database/schema.sql
+!/database/seed.sql
+*.sql.gz
+*.sql.zip
+*.bak
+*.old
+*.log
+*.zip
+*.tar
+*.gz
+
+# Local tools and operating-system files.
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~

@@ -1,0 +1,2 @@
+# Run tests with the PHP CLI, not through the public web server.
+Require all denied
