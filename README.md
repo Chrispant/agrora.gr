@@ -59,7 +59,16 @@ Initialize Git inside `agrora.gr`, not around the whole workspace.
 7. Visit the configured local hostname, check product browsing, then visit
    `/api/admin/admin-login.php` and use the password whose hash you configured.
 
-The loader reads `../private/agrora-config.php` relative to the repository root.
+The loader selects a private configuration by the on-disk document-root folder:
+
+- `agrora.gr` reads `../private/agrora-config.php`.
+- `elegant-visvesvaraya.213-158-90-234.plesk.page` reads
+  `../private/agrora-test-config.php`, containing the separate test database credentials.
+
+Unknown folder names fail closed. Keep the local checkout named `agrora.gr`;
+additional deployment folder names must be explicitly added in `api/config.php`.
+The test deployment never falls back to the live file if its own file is missing.
+Selection does not depend on the request's Host header.
 It does not load `.env` files or use the old `AGRORA_*` environment-variable fallbacks.
 All six example keys are used: database keys must be nonempty strings, and the
 admin hash must be a valid PHP password hash. Missing/invalid configuration returns

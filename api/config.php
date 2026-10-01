@@ -14,7 +14,17 @@ function agrora_config(): array {
     return $config;
   }
 
-  $path = dirname(__DIR__, 2) . '/private/agrora-config.php';
+  // Use the on-disk deployment folder, never the request's Host header.
+  // Unknown deployments must not silently connect to the live database.
+  $configFiles = [
+    'agrora.gr' => 'agrora-config.php',
+    'elegant-visvesvaraya.213-158-90-234.plesk.page' => 'agrora-test-config.php',
+  ];
+  $siteFolder = basename(dirname(__DIR__));
+  if (!isset($configFiles[$siteFolder])) {
+    agrora_configuration_error();
+  }
+  $path = dirname(__DIR__, 2) . '/private/' . $configFiles[$siteFolder];
   if (!is_readable($path)) {
     agrora_configuration_error();
   }
